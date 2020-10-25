@@ -27,6 +27,7 @@
 \newif\ifsolution
 \solutiontrue
 \newcommand{\solution}{\textbf{Your Solution:}}
+\newcommand{\rsolution}{\textbf{Right Solution:}}
 
 \textbf{Both theory and programming questions} are due {\bf \partaduedate} at {\bf 11:59PM}.
 %
@@ -54,7 +55,7 @@ your critique of the solutions.
 
 \textbf{Collaborators:}
 %%% COLLABORATORS START %%%
-None.
+Me, myself, and I.
 %%% COLLABORATORS END %%%
 
 \begin{problems}
@@ -79,7 +80,8 @@ $$
 
 \ifsolution \solution{}
 %%% PROBLEM 1(a) SOLUTION START %%%
-1, 2, 3, 4
+1, 2, 4, 3 \\
+\rsolution{} 1, 2, 4, 3
 %%% PROBLEM 1(a) SOLUTION END %%%
 \fi
 
@@ -96,7 +98,10 @@ $$
 
 \ifsolution \solution{}
 %%% PROBLEM 1(b) SOLUTION START %%%
-1, 2, 3, 4
+1, 4, 3, 2 \\
+\rsolution{} 1, 4, 3, 2
+
+
 %%% PROBLEM 1(b) SOLUTION END %%%
 \fi
 
@@ -113,7 +118,10 @@ $$
 
 \ifsolution \solution{}
 %%% PROBLEM 1(c) SOLUTION START %%%
-1, 2, 3, 4
+4, 3, 2, 1 \\
+\rsolution{} 4, 1, 3, 2 \\
+$n^{\sqrt{n}}$ can be transformed to $2^{log n * \sqrt(n)}$ \\
+$n^{10} \cdot 2^{n / 2}$ can be transformed to $2^{10 * log n + n/2}$
 %%% PROBLEM 1(c) SOLUTION END %%%
 \fi
 
@@ -149,7 +157,11 @@ $$
 
 \ifsolution \solution{}
 %%% PROBLEM 2(a) SOLUTION START %%%
-1
+2 \\
+\rsolution{} 2 \\
+Replace $\Theta(x + y)$ with $T(x, c)$ and $T(c, y)$ and you get $c(x + y)$. Then if you break down $T(x/2, y/2)$ from its recursive representation, you get:\\\\
+$T(x, y) &=& c(x + y) + c(x + y) / 2 + c(x + y) / 4 + c(x + y) / 8 + ... + c$ \\\\
+The recurrence is bounded by $2c(x + y)$, so $T(x, y)$ must be linear.\\
 %%% PROBLEM 2(a) SOLUTION END %%%
 \fi
 
@@ -176,7 +188,13 @@ $$
 
 \ifsolution \solution{}
 %%% PROBLEM 2(b) SOLUTION START %%%
-1
+3 \\
+\rsolution{} 3 \\
+Replace $\Theta(x)$ with $T(x, c)$ and you get $cx$.\\
+Next, reduce the recursive function:\\
+$T(x, y/2) &=& cx + T(x, y/4)$ \\
+and so on. You end up with: \\
+$T(x, y) &=& cx + cx + cx + ...$ done log $y$ times. \\
 %%% PROBLEM 2(b) SOLUTION END %%%
 \fi
 
@@ -204,7 +222,11 @@ $$
 
 \ifsolution \solution{}
 %%% PROBLEM 2(c) SOLUTION START %%%
-1
+2 \\
+\rsolution{} 2 \\
+Replace the $S(x, y/2)$ function in $T(x,y)$ and you get this:\\
+$T(x,y) &=& \Theta(x) + T(x/2, y/2)$ \\
+Which is the same recurrence relation as in problem (a).
 %%% PROBLEM 2(c) SOLUTION END %%%
 \fi
 
@@ -242,7 +264,9 @@ and which are efficient.
 
 \ifsolution \solution{}
 %%% PROBLEM 3(a) SOLUTION START %%%
-1
+1 \\
+\rsolution{} 1 \\
+This is just the second solution with a runtime of $O(nlog m)$ from lecture 1.
 %%% PROBLEM 3(a) SOLUTION END %%%
 \fi
 
@@ -254,7 +278,9 @@ and which are efficient.
 
 \ifsolution \solution{}
 %%% PROBLEM 3(b) SOLUTION START %%%
-1
+1 \\
+\rsolution{} 1 \\
+This is just the first (greedy ascent) solution with a runtime of $O(mn)$ from lecture 1. Depending on how we choose to move through the matrix, it's possible the algorithm will explore the entire matrix.
 %%% PROBLEM 3(b) SOLUTION END %%%
 \fi
 
@@ -266,7 +292,20 @@ and which are efficient.
 
 \ifsolution \solution{}
 %%% PROBLEM 3(c) SOLUTION START %%%
-1
+2 \\
+\rsolution{} 2 \\
+Counterexample:
+\begin{verbatim}
+problemMatrix = [
+    [0, 0, 9, 8, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 3, 0, 0, 0, 0, 0],
+    [0, 7, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0]
+]
+\end{verbatim}
 %%% PROBLEM 3(c) SOLUTION END %%%
 \fi
 
@@ -278,7 +317,9 @@ and which are efficient.
 
 \ifsolution \solution{}
 %%% PROBLEM 3(d) SOLUTION START %%%
-1
+1 \\
+\rsolution{} 1 \\
+The runtime is similar to that of problem 1-2c. It alternates between searching for row and column, where searching the row or column takes $\Theta(x)$ or $\Theta(y)$. Then it splits the matrix in half row-wise ($T(x/2,y)$ or column-wise ($T(x,y/2)$).
 %%% PROBLEM 3(d) SOLUTION END %%%
 \fi
 
@@ -300,7 +341,8 @@ and which are efficient.
 
 \ifsolution \solution{}
 %%% PROBLEM 4(a) SOLUTION START %%%
-1
+3 \\
+\rsolution{} 3
 %%% PROBLEM 4(a) SOLUTION END %%%
 \fi
 
@@ -316,7 +358,8 @@ and which are efficient.
 
 \ifsolution \solution{}
 %%% PROBLEM 4(b) SOLUTION START %%%
-1
+5 \\
+\rsolution{} 5
 %%% PROBLEM 4(b) SOLUTION END %%%
 \fi
 
@@ -332,7 +375,9 @@ and which are efficient.
 
 \ifsolution \solution{}
 %%% PROBLEM 4(c) SOLUTION START %%%
-1
+3 \\
+\rsolution{} 3 \\
+The runtime is similar to that of problem 1-2a. Searching the cross takes $\Theta(n + n)$ time, then splitting the matrix has the recurrence relation of $T(x/2, y/2)$.
 %%% PROBLEM 4(c) SOLUTION END %%%
 \fi
 
@@ -348,7 +393,8 @@ and which are efficient.
 
 \ifsolution \solution{}
 %%% PROBLEM 4(d) SOLUTION START %%%
-1
+1 \\
+\rsolution{} 1
 %%% PROBLEM 4(d) SOLUTION END %%%
 \fi
 
@@ -441,9 +487,75 @@ making $val(r_1, c_1) \ge val(r_2, c_1)$.
 Hence, we have a contradiction.
 \end{quote}
 
-\ifsolution \solution{}
+\ifsolution \solution{} \\
 %%% PROBLEM 5 SOLUTION START %%%
-Write your proof here.
+algorithm2 is slower than algorithm4 and algorithm3 is wrong, so the fastest algorithm is 4. Some differences between algorithms 1 and 4:\\\\
+Obviously, 4 alternates between splitting the matrix by row and column, so the search space is different.\\
+The search space also decreases at a different rate. In 1, we're only decreasing the number of columns, but in 4, either the number of rows or columns will decrease, and the length of each row or column will also decrease. \\
+The subproblem is also different, as illustrated through the runtime $T(m,n)$. \\
+
+Here is the modified proof: \\
+
+\begin{quote}
+We wish to show that \texttt{algorithm4}
+will always return a peak,
+as long as the problem is not empty.
+To that end,
+we wish to prove the following two statements:
+
+{\bf 1. If the peak problem is not empty,
+then \texttt{algorithm4} will always return a location.}
+Say that we start with a problem of size $m \times n$.
+The recursive subproblem examined by \texttt{algorithm4}
+will have dimensions
+$\lfloor m/2 \rfloor \times n$, $m - \lfloor m/2 \rfloor - 1$, $m \times \lfloor n/2 \rfloor$, or 
+$m \times \left(n - \lfloor n / 2 \rfloor - 1 \right)$.
+Therefore, either the number of rows or columns in the problem
+strictly decreases with each recursive call
+as long as $m > 0$ and $n > 0$.
+So \texttt{algorithm4} either returns a location at some point,
+or eventually examines a subproblem with a non-positive
+number of rows and columns.
+The only way for the number of columns to become strictly negative,
+according to the formulas that determine the size of the subproblem,
+is to have $m = 0$ or $n = 0$ at some point.
+So if \texttt{algorithm4} doesn't return a location,
+it must eventually examine an empty subproblem.
+
+We wish to show that there is no way that this can occur.
+Assume, to the contrary,
+that \texttt{algorithm4} does examine an empty subproblem.
+Just prior to this,
+it must examine a subproblem of size
+$m \times 1$ or $m \times 2$.
+If the problem is of size $m \times 1$,
+then calculating the maximum of the central column
+is equivalent to calculating the maximum of the entire problem.
+Hence, the maximum that the algorithm finds must be a peak,
+and it will halt and return the location.
+If the problem has dimensions $m \times 2$,
+then there are two possibilities:
+either the maximum of the central column is a peak
+(in which case the algorithm will halt and return the location),
+or it has a strictly better neighbor in the other column
+(in which case the algorithm will recurse
+on the non-empty subproblem with dimensions $m \times 1$,
+thus reducing to the previous case).
+So \texttt{algorithm4} can never recurse into an empty subproblem,
+and therefore \texttt{algorithm4} must eventually return a location.
+
+{\bf 2. If \texttt{algorithm1} returns a location,
+it will be a peak in the original problem.}
+If \texttt{algorithm4} returns a location $(r_1, c_1)$,
+then that location must have been the maximum peak seen. For any $(r_2, c_2)$ that was designated as the peak during the algorithm, for \texttt{algorithm4} to return $(r_1, c_1)$, then it has to be true that the element in $(r_1,c_1)$ is larger.
+Assume, for the sake of contradiction,
+that $(r_1, c_1)$ is not also a peak within the original problem.
+Then as the location $(r_1, c_1)$ is passed up the chain of recursive calls,
+it must eventually reach a level where it stops being a peak.
+At that level, $(r_1, c_1)$ has some neighbor $(r_3, c_3)$ that has a value larger than that in $(r_1, c_1)$. For $(r_3, c_3)$ to be part of the recursive subproblem, but not included, it must be in the row or column we were exploring in the current subproblem, so it was visited already. Therefore, it must be true that the values in $(r_3, c_3) \leq (r_2, c_2)$, and we get the following chain of inequalities: $(r_1, c_1) < (r_3, c_3) \leq (r_2, c_2) \leq (r_1, c_1)$ \\
+
+Hence, we have a contradiction.
+\end{quote}
 %%% PROBLEM 5 SOLUTION END %%%
 \fi
 
@@ -454,23 +566,18 @@ upload a Python file giving a counterexample
 (i.e. a matrix for which the algorithm returns a location
 that is not a peak).
 
-\ifsolution \solution{}
+\ifsolution \solution{} \\
 %%% PROBLEM 6 SOLUTION START %%%
+algorithm3
 \begin{verbatim}
 problemMatrix = [
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0]
-]
-
-problemMatrix = [
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0]
+    [0, 0, 9, 8, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 3, 0, 0, 0, 0, 0],
+    [0, 7, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0]
 ]
 \end{verbatim}
 %%% PROBLEM 6 SOLUTION END %%%
