@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{6.006 FA11 PSET3 Answers}
+\author{Peter Yao}
+\date{November 13, 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem 3-1}
+a) 4. AVL Trees =$>$ DS used to find range index \\
+Min and max heaps cannot find the min and max values in sub-linear time by themselves. A BST without any self-balancing functionality will turn into a list if insertions are done in a certain way. B-Trees can accomplish what we need, but is not the simplest data structure we can use. \\\\
+b) 3. $O$(log$N$) =$>$ insert \\\\
+c) 3. $O$(log$N$) =$>$ find min key \\\\
+d) 3. $O$(log$N$) =$>$ find max key \\\\
+COUNT(l,h) returns the num keys btwn l and h inclusive \\
+RANK(x) returns the num keys in the index smaller or equal to x \\\\
+e) 3. RANK(l) + RANK(h) + 1 =$>$ COUNT(l,h) \\\\
+f) 2. RANK(l) + RANK(h) =$>$ COUNT(l,h) assuming l doesn't exist \\\\
+g) 3. RANK(l) + RANK(h) + 1 =$>$ COUNT(l,h) assuming h doesn't exist \\\\
+h) 2. RANK(l) + RANK(h) =$>$ COUNT(l,h) assuming l and h don't exist \\\\
+i) 4. the number of nodes in the subtree rooted at node \\\\
+j) 3. $O$(log$N$) bits of storage per node for the height \\\\
+A tree will have N nodes, so it will need log base 2 N bits. \\\\
+k) 2. 1 =$>$ $N_4.\gamma$ \\\\
+A leaf has one node in its subtree, itself. \\\\
+l) 3. 3 =$>$ $N_3.\gamma$ \\\\
+m) 4. 6 =$>$ $N_2.\gamma$ \\\\
+n) 4. 10 =$>$ $N_1.\gamma$ \\\\
+o) ROTATE-LEFT, ROTATE-RIGHT, REBALANCE \\\\
+Any method that will change a node's height must update $\gamma$. INSERT and DELETE rely on those methods; they don't change any node's height by themselves. HEAPIFY is not an AVL tree method. \\\\
+p) 3. $O$(log$N$) =$>$ running time of COUNT() based on RANK() \\\\
+q) 2. lowest common ancestor \\\\
+r) 3. $O$(log$N$) =$>$ running time of LCA(l,h) \\\\
+s) 8. $O$(log$N$) + $O$($L$) =$>$ running time of NODE-LIST in line 3 \\
+NODE-LIST will spend constant time inserting at worst N nodes, and the recursive calls will also take logarithmic time. Both are called separately.\\\\
+t) 8. $O$(log$N$) + $O$($L$) =$>$ running time of LIST \\\\
+u) Proof that LCA is correct: \\
+First, consider any edge cases. If l and/or h don't exist in the BST, insert them as "imaginary" nodes without using rebalancing methods. Now, we need to prove that the LCA algorithm does what it says it does and maintains the invariant that l and h belong to the subtree rooted at node.\\\\
+LCA should maintain the invariant that l and h will be in node's subtree. The boundary checks throughout LCA will keep l and h in either subtree. If l and r are smaller than node's key, they'll be in the left subtree, and vice versa for the right subtree. Therefore, the invariant has been preserved. \\\\
+We can prove correctness through proof by contradiction. Let r be the result node from LCA, and k be the key of the correct node. If the invariant holds, l and h are in the subtree and rooted at r, and k is in the subtree rooted at r. If c is in r's left subtree, then c $<$ r. If l and h are in the subtree rooted at c, then they must be in r's left subtree, meaning l $<$ r and h $<$ r. However, the if condition on line 2 of LCA will be true if node == r, so we won't return r and continue with the algorithm. We've reached a contradiction. For the case where c is in r's right subtree, the argument is symmetrical, where l $>$ r and h $>$ r.\\\\
+
+\section{Problem 3-2}
+a) the method intersects has the most CPU usage \\\\
+b) the method intersects was called 187590314 times \\\\
+c) 1, 2, 5 - the $x$ coordinates of both endpoints of the horizontal wires and vertical wires =$>$ are the points of interest in the input only \\\\
+d) 1. the wire is added to the range index =$>$ when the sweep line hits the $x$ coordinate of the left endpoint of a horizontal wire \\\\
+e) 2. the wire is removed from the range index =$>$ when the sweep line hits the $x$ coordinate of the right endpoint of a horizontal wire \\\\
+f) 4. nothing happens =$>$ when the sweep line hits the midpoint of a horizontal wire \\\\
+g) 3. a range index query is performed =$>$ when the sweep line hits the x coordinate of a vertical wire \\\\
+h) 2. the range index holds all the horizontal wires "stabbed" by the sweep line =$>$ sweep-line invariant \\\\
+i) 2. the y coordinate of the wire's midpoint =$>$ the corresponding key of the wire added to the range index \\\\
+j) The count method has the highest CPU usage. \\\\
+k) count is called 20000 times. \\\\
+l) See circuit2.py code
+
+\end{document}
