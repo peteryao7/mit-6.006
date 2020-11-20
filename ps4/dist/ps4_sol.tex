@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{6.006 PSET 4}
+\author{Peter Yao}
+\date{November 19, 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem 4-1}
+a) 3. No, reordering words in a string will not produce a different hash. \\\\
+b) 4. Both dynamic resizing and collision resolution are necessary to maintain performance and correctness. Dynamic resizing will prevent collisions from happening, and collision resolution will prevent accuracy issues when searching for the value. \\\\
+c) 3. $\Theta(n)$ or 7. $\Theta(m' + n)$ \\
+Depending on the kind of hash table you're creating, it may take $\Theta(m')$ to initialize a list or some other data structure for each key. Otherwise, we don't need to reinitialize anything except create the table, which takes $\Theta(1)$. Then it will take $\Theta(n)$ to reinsert every element in the new table. \\\\
+d) Expanding the size of the window by a constant would lead to an amortized $O(n/k) = O(n)$ time. When we doubled the table size, we performed an $O(n)$ expand operation on every $O(n)$ step. But now, we're performing an $O(n)$ expand operation on every $O(k) = O(1)$ step.
+
+\section{Problem 4-2}
+a) 1. Many insertions right after creation, and then mostly lookups. \\
+Under "membership testing", it states that it's created once and rarely changes. So there will be many insertions at the beginning to create the table. Afterwards, there are many calls to \_\_contains\_\_() or has\_key(), which are lookup operations. \\\\
+b) 3. A large minimum size and a growth rate of 4. \\
+According to the docs, setting the growth rate upon hitting maximum load to \*4 will result in half the number of resizes, less effort to resize, and better spareseness. Also, we should use a large minimum size, since in the beginning, when we're inserting a lot of entries into the hash table, we want to limit the number of resizes as much as possible.
+
+\section{Problem 4-3}
+See the code in dnaseq.py.
+
+\end{document}
